@@ -38,6 +38,13 @@
                             <th scope="col">total</th>
                         </tr>
                     </thead>
+@php $total = 0 @endphp
+@foreach((array) session('cart') as $id => $details)
+@php $total += $details['price'] * $details['quantity'] @endphp
+@endforeach
+
+@if(session('cart'))
+@foreach(session('cart') as $id => $details)
                     <tbody>
                         <tr>
                             <td>
@@ -45,7 +52,7 @@
                                         src="{{ asset('vendor/themes') }}/images/layout-3/product/1.jpg" alt="cart"
                                         class=" "></a>
                             </td>
-                            <td><a href="javascript:void(0)">cotton shirt</a>
+                            <td><a href="javascript:void(0)">{{ $details['name'] }}</a>
                                 <div class="mobile-cart-content">
                                     <div class="col-xs-3">
                                         <div class="qty-box">
@@ -56,7 +63,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <h2 class="td-color">$63.00</h2>
+                                        <h2 class="td-color">${{ $details['price'] }}</h2>
                                     </div>
                                     <div class="col-xs-3">
                                         <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i
@@ -81,99 +88,16 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href="javascript:void(0)"><img
-                                        src="{{ asset('vendor/themes') }}/images/layout-3/product/4.jpg" alt="cart"
-                                        class=" "></a>
-                            </td>
-                            <td><a href="javascript:void(0)">cotton shirt</a>
-                                <div class="mobile-cart-content">
-                                    <div class="col-xs-3">
-                                        <div class="qty-box">
-                                            <div class="input-group">
-                                                <input type="number" name="quantity" class="form-control input-number"
-                                                    value="1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <h2 class="td-color">$63.00</h2>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i
-                                                    class="ti-close"></i></a></h2>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h2>$63.00</h2>
-                            </td>
-                            <td>
-                                <div class="qty-box">
-                                    <div class="input-group">
-                                        <input type="number" name="quantity" class="form-control input-number"
-                                            value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></td>
-                            <td>
-                                <h2 class="td-color">$4539.00</h2>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href="javascript:void(0)"><img
-                                        src="{{ asset('vendor/themes') }}/images/layout-3/product/3.jpg" alt="cart"
-                                        class=" "></a>
-                            </td>
-                            <td><a href="javascript:void(0)">cotton shirt</a>
-                                <div class="mobile-cart-content">
-                                    <div class="col-xs-3">
-                                        <div class="qty-box">
-                                            <div class="input-group">
-                                                <input type="number" name="quantity" class="form-control input-number"
-                                                    value="1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <h2 class="td-color">$63.00</h2>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i
-                                                    class="ti-close"></i></a></h2>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h2>$63.00</h2>
-                            </td>
-                            <td>
-                                <div class="qty-box">
-                                    <div class="input-group">
-                                        <input type="number" name="quantity" class="form-control input-number"
-                                            value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td><a href="javascript:void(0)" class="icon"><i class="ti-close"></i></a></td>
-                            <td>
-                                <h2 class="td-color">$4539.00</h2>
-                            </td>
-                        </tr>
-                    </tbody>
+                    @endforeach
+                    @endif
+                 
                 </table>
                 <table class="table cart-table table-responsive-md">
                     <tfoot>
                         <tr>
                             <td>total price :</td>
                             <td>
-                                <h2>$6935.00</h2>
+                                <h2>$ {{ $total }}</h2>
                             </td>
                         </tr>
                     </tfoot>
@@ -314,7 +238,7 @@
                 </li>
                 <li>
                     <div class="total">
-                        total<span>$1050.00</span>
+                        total<span>$ {{ $total }}</span>
                     </div>
                 </li>
                 <li>

@@ -56,3 +56,7 @@ Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
 
 Route::get('auth/{provider}', [SocialiteController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [SocialiteController::class, 'handleProviderCallback']);
+
+Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');

@@ -132,7 +132,7 @@
                                         </div>
                                     </a>
                                 </li>
-                                @livewire('cart')
+
                             </ul>
                         </div>
                         <div class="menu-nav">

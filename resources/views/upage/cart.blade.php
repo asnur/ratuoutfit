@@ -38,21 +38,15 @@
                             <th scope="col">total</th>
                         </tr>
                     </thead>
-@php $total = 0 @endphp
-@foreach((array) session('cart') as $id => $details)
-@php $total += $details['price'] * $details['quantity'] @endphp
-@endforeach
-
-@if(session('cart'))
-@foreach(session('cart') as $id => $details)
                     <tbody>
                         <tr>
+                   
                             <td>
                                 <a href="javascript:void(0)"><img
                                         src="{{ asset('vendor/themes') }}/images/layout-3/product/1.jpg" alt="cart"
                                         class=" "></a>
                             </td>
-                            <td><a href="javascript:void(0)">{{ $details['name'] }}</a>
+                            <td><a href="javascript:void(0)"></a>
                                 <div class="mobile-cart-content">
                                     <div class="col-xs-3">
                                         <div class="qty-box">
@@ -63,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <h2 class="td-color">${{ $details['price'] }}</h2>
+                                        <h2 class="td-color">asd</h2>
                                     </div>
                                     <div class="col-xs-3">
                                         <h2 class="td-color"><a href="javascript:void(0)" class="icon"><i
@@ -86,10 +80,10 @@
                             <td>
                                 <h2 class="td-color">$4539.00</h2>
                             </td>
+                         
                         </tr>
                     </tbody>
-                    @endforeach
-                    @endif
+             
                  
                 </table>
                 <table class="table cart-table table-responsive-md">
@@ -97,7 +91,7 @@
                         <tr>
                             <td>total price :</td>
                             <td>
-                                <h2>$ {{ $total }}</h2>
+                                <h2>$ 1</h2>
                             </td>
                         </tr>
                     </tfoot>
@@ -167,7 +161,7 @@
                         </a>
                         <div class="media-body">
                             <a href="product-page(left-sidebar).html">
-                                <h4>Double Door Refrigerator</h4>
+                                <h4>Double Door Refrswdasdigerator</h4>
                             </a>
                             <h6>
                                 $80.00 <span>$120.00</span>
@@ -238,7 +232,7 @@
                 </li>
                 <li>
                     <div class="total">
-                        total<span>$ {{ $total }}</span>
+                        total<span>$ 1</span>
                     </div>
                 </li>
                 <li>

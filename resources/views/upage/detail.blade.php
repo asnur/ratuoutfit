@@ -283,8 +283,117 @@
                             </div>
                         </div>
                         <div class="col-lg-7 rtl-text">
-                            @livewire('product', ['slug' => Request::segment(2)])
-                            
+                        <div class="product-right ">
+    <div class="pro-group">
+        <h2>{{ $product->name }}</h2>
+        <ul class="pro-price">
+            <li>Rp.
+                {{ number_format($product->price - ($product->price*($product->sale/100))) }}
+            </li>
+            <li><span>Dari
+                    Rp.{{ number_format($product->price) }}</span>
+            </li>
+            <li>{{ $product->sale }}% off</li>
+        </ul>
+        <div class="revieu-box">
+            <ul>
+                @if($rating->rating($product->id) > 0)
+                
+                @for($i=0; $i<floor($rating->rating($product->id)); $i++) 
+            
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                @endfor
+                @for($i=0; $i< 5-floor($rating->rating($product->id)); $i++)
+            
+                <li>
+                    <i class="fa fa-star-o"></i>
+                </li>
+                @endfor
+                @else
+               
+                @for($i=0; $i<5;$i++)
+           
+                <li>
+                    <i class="fa fa-star-o"></i>
+                </li>
+                @endfor
+                @endif
+            </ul>
+            <a><span>({{ $rating->countReview($product->id) }} reviews)</span></a>
+        </div>
+    </div>
+    
+    <div id="selectSize"
+        class="pro-group addeffect-section product-description border-product">
+        <h6 class="product-title size-text">select size<span>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#sizemodal">size
+                    chart</a></span></h6>
+        <div class="error">
+      
+        </div>
+        <ul>
+            <li>
+              <a href="javascript:void(0)"></a> 
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" wire:model="size_value" wire:click="choose_size" class="btn-check" id="" autocomplete="off" value="" aria-disabled="true" tabindex="-1">
+                        <label class="btn btn-outline-primary" for=""></label>
+
+                </div>
+            </li>
+        </ul>
+     <div class="size-box">
+            
+        </div>
+
+        <h6 class="product-title mt-3">color</h6>
+        <div class="error">
+        </div>
+
+        <div class="color-selector inline">
+            <ul>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+                                <input type="radio" wire:model="color_value" class="btn-check p-3" id="" autocomplete="off" value="" disabled>
+                                <label class="btn btn-outline-primary p-3" style="background:" for=""></label>
+
+                            <input type="radio" wire:model="color_value" class="btn-check p-3" id=" autocomplete="off" value="">
+                            <label class="btn btn-outline-primary p-3" style="background: for="></label>
+                
+                    </div>
+            </ul>
+        </div>
+        <h6 class="product-title">quantity</h6>
+        <div class="error">
+            @error('qty') 
+                <span class="error text-danger">{{ $message }}</span>
+            @enderror
+            @if(session()->has('pesan'))
+                <span class="error text-danger">{{ session('pesan') }}</span>
+            @endif
+        </div>
+        <div class="qty-box">
+            <div class="input-group">
+                <button>-</button>
+                <input class="qty-adj form-control" type="number" value="1" />
+                <button>+</button>
+            </div>
+        </div>
+        <div class="product-buttons mt-3">
+            <button type="submit" wire:click="cart" id="cartEffect"
+                class="btn cart-btn btn-normal tooltip-top"
+                data-tippy-content="Add to cart">
+                <i class="fa fa-shopping-cart"></i>
+                add to cart
+            </button>
+            <button wire:click="wishlist" class="btn btn-normal add-to-wish tooltip-top"
+                data-tippy-content="Add to wishlist">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
                         </div>
                     </div>
                 </div>
@@ -1180,7 +1289,6 @@
 <!-- Quick-view modal popup end-->
 
 <!-- add to cart bottom sticky start-->
-@livewire('product-bottom', ['slug' => Request::segment(2)])
 <!-- add to cart bottom sticky end-->
 
 <!-- added to cart notification -->
@@ -1188,4 +1296,9 @@
     <img src="{{ asset('vendor/themes') }}/images/product-sidebar/001.jpg" class="img-fluid" alt="">
     <h3>added to cart</h3>
 </div>
+
+<script>
+    
+</script>
+
 @endsection

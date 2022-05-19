@@ -337,9 +337,10 @@
             <li>
               <a href="javascript:void(0)"></a> 
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" wire:model="size_value" wire:click="choose_size" class="btn-check" id="" autocomplete="off" value="" aria-disabled="true" tabindex="-1">
-                        <label class="btn btn-outline-primary" for=""></label>
-
+                @foreach ($size as $ukuran)
+                        <input type="radio" class="btn-check" id="" autocomplete="off" value="" aria-disabled="true" tabindex="-1">
+                        <label class="btn btn-outline-primary" for="">{{ $ukuran->size->size_value}}</label>
+                        @endforeach
                 </div>
             </li>
         </ul>
@@ -354,13 +355,10 @@
         <div class="color-selector inline">
             <ul>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-
-                                <input type="radio" wire:model="color_value" class="btn-check p-3" id="" autocomplete="off" value="" disabled>
-                                <label class="btn btn-outline-primary p-3" style="background:" for=""></label>
-
-                            <input type="radio" wire:model="color_value" class="btn-check p-3" id=" autocomplete="off" value="">
-                            <label class="btn btn-outline-primary p-3" style="background: for="></label>
-                
+                    @foreach ($colour as $warna)
+                            <input type="radio" class="btn-check p-3" id=" autocomplete="off" value="">
+                            <label class="btn btn-outline-primary p-3" style="background-color:{{$warna->colour->color_value}}"></label>
+                            @endforeach
                     </div>
             </ul>
         </div>
@@ -375,9 +373,9 @@
         </div>
         <div class="qty-box">
             <div class="input-group">
-                <button>-</button>
-                <input class="qty-adj form-control" type="number" value="1" />
-                <button>+</button>
+                <button id="btn-minus">-</button>
+                <input id="input" class="qty-adj form-control" type="number" value="1" />
+                <button type="button" id="btn-plus">+</button>
             </div>
         </div>
         <div class="product-buttons mt-3">
@@ -1263,7 +1261,7 @@
                                 <div class="qty-box">
                                     <div class="input-group">
                                         <button class="qty-minus"></button>
-                                        <input class="qty-adj form-control" type="number" value="1">
+                                        <input id="input" class="qty-adj form-control" type="number" value="1">
                                         <button class="qty-plus"></button>
                                     </div>
                                 </div>
@@ -1298,7 +1296,20 @@
 </div>
 
 <script>
+$(document).ready(function(){ 
     
+    var i = 1;
+
+    $('#btn-plus').on('click', function(){
+	$('#input').val(++i);
+});
+$('#btn-minus').on('click', function(){
+	if($('#input').val() > 1)
+    {
+    	 $('#input').val(--i);
+    }
+});
+});
 </script>
 
 @endsection

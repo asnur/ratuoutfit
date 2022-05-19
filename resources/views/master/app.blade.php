@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/themes') }}/css/animate.css">
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/themes') }}/css/bootstrap.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/themes') }}/css/color2.css" media="screen" id="color">
     @livewireStyles
@@ -58,7 +58,7 @@
 
     @include('master.footer')
     <script src="https://use.fontawesome.com/bb34672705.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
+    
     <!-- latest jquery-->
     <script src="{{ asset('vendor/themes') }}/js/jquery-3.3.1.min.js"></script>
 

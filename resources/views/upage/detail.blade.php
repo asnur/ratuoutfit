@@ -9,7 +9,7 @@
                     <div>
                         <h2>product</h2>
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{ url('/') }}">home</a></li>
                             <li><i class="fa fa-angle-double-right"></i></li>
                             <li><a href="javascript:void(0)">product</a></li>
                         </ul>
@@ -110,7 +110,7 @@
                                     @foreach ($new_product->new_product('Hijab') as $hijab)
                                     <div class="media-banner-box">
                                         <div class="media">
-                                            <a href="product-page(left-sidebar).html" tabindex="0">
+                                            <a href="{{ route('detail', $hijab->slug)}}" tabindex="0">
                                                 <img src="{{ asset('vendor/themes') }}/images/product/{{ $hijab->cover }}"
                                                     class="img-fluid" width="120" alt="banner">
                                             </a>
@@ -560,7 +560,7 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <a href="product-page(left-sidebar).html">
+                                    <a href="{{ route('detail', $relate->slug) }}">
                                         <img src="{{ asset('vendor/themes') }}/images/product/{{ $relate->cover }}"
                                             class="img-fluid" alt="product" style="height: 300px; object-fit: cover; object-possition: center;">
                                     </a>
